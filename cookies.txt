@@ -1,6 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-scapub.sbe.sptrans.com.br	TRUE	/sa	FALSE	1999999999	JSESSIONID	YdxI7xVxAWpmTiVWxkCaaAW4
-scapub.sbe.sptrans.com.br	TRUE	/	FALSE	1999999999	sptransscapubt	rd1o00000000000000000000ffff0a22c222o8090
-scapub.sbe.sptrans.com.br	TRUE	/	FALSE	1999999999	f5_cspm	1234
-

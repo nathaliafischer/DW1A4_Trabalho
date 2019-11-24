@@ -1,17 +1,14 @@
 
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 
-<!-- Mirrored from scapub.sbe.sptrans.com.br/sa/acessoPublico/index.action by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 24 Nov 2019 19:07:02 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130756609-2"></script>
 	<script src="../assets/js/GoogleAnalytics/publicAnalytics.js"></script>
-		
+	<script src="https://kit.fontawesome.com/485177253c.js" crossorigin="anonymous"></script>
+	
 	<meta http-equiv="X-UA-Compatible" content="IE=7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -40,7 +37,8 @@
 	<script>
 		var j = jQuery.noConflict();
 	</script>
-	<title>Sistema P&uacute;blico SPTrans - 34</title>
+	<link REL="SHORTCUT ICON" HREF="https://scapub.sbe.sptrans.com.br/sa/imagens/logo_bu.png;jsessionid=YdxI7xVxAWpmTiVWxkCaaAW4"> <!-- Adicionado ícone do Bilhete Único para fácil identificação. !-->
+	<title>Bilhete Único - Login</title> <!-- Título da página modificado para fácil entendimento do usuário !-->
 </head>
 <body id="bdTela">
 <table style="width:960px; border:0px;" align="center" cellpadding="2" cellspacing="0" border="0">
@@ -78,11 +76,6 @@
 	<tr>
 		<td align="center">
 			
-
-<!--[if IE]>
-<style type="text/css">.titCad, .textoBco, #formCad { font-family:Arial;} #formCad { margin-top:-10px;}</style>
-<![endif]-->
-
 
 
 <script>
@@ -213,13 +206,14 @@
 		
 		<table>
 			<tr style="display:table-row;">
-				<td class="ui-dialog-titlebar ui-widget-header-green ui-corner-all ui-helper-clearfix " style="width:250px;">Sou novo usu&aacute;rio</td>
-				<td class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix " style="width:390px;">Já sou cadastrado</td>
+				<!--<td class="ui-dialog-titlebar ui-widget-header-green ui-corner-all ui-helper-clearfix " style="width:250px;">Sou novo usu&aacute;rio</td>!--> <!-- NF: Essa div causa confusão no usuário! !-->
+				<td class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix " style="width:390px; text-align:center">Já sou cadastrado</td>
 				
 			</tr>
 			<tr style="display:table-row;">
 				<td style="text-align: center;padding-top: 10px;padding-bottom:10px;">
-					<a id="formLogin_" href="novoUsuario-2.html">
+					<!--<a id="formLogin_" href="novoUsuario-2.html"> NF: Essa tela levava para a tela de cadastro de novo usuário. Não condiz com o esperado. Link substituído pela tela inicial do bilhete único.!-->
+					<a id="formLogin_" href="http://bilheteunico.sptrans.com.br/novobu.aspx"> 				
 						<img src="https://scapub.sbe.sptrans.com.br/sa/imagens/logo_bu.png;jsessionid=YdxI7xVxAWpmTiVWxkCaaAW4" alt="Cadastre-se" border="0" />
 					</a>
 				</td>
@@ -236,7 +230,7 @@
 						
 						<table class="ui-dialog-titlebar ui-widget-header-white ui-corner-all ui-helper-clearfix dados">
 							<tr>
-								<td>RG.:</td>
+								<!-- <td>RG.:</td>  NF: removido. Não há necessidade de RG e CPF para entrar no cadastro.
 								<td>
 									<input type="text" name="usuLoginRg" size="15" maxlength="14" value="" id="usuLoginRg" class="textField"/>
 &nbsp;-&nbsp; 
@@ -270,16 +264,16 @@
     <option value="SC">SC</option>
     <option value="SE">SE</option>
     <option value="TO">TO</option>
-
+!-->
 
 </select>
 
 								</td>
 							</tr>
 							<tr>
-								<td>CPF.:</td>
+								<td>CPF</td>	
 								<td>
-									<input type="text" name="usuLoginCpf" size="23" maxlength="14" value="" id="usuLoginCpf" class="textField"/>
+									<input type="text" name="usuLoginCpf" size="25" maxlength="14" value="" id="usuLoginCpf" class="textField"/>
 
 								</td>
 							</tr>
@@ -287,18 +281,18 @@
 								<td colspan="2"><b>------- OU -------</b></td>
 							</tr>
 							<tr>
-								<td>E-mail.:</td>
+								<td>E-mail</td>
 								<td>
-									<input type="text" name="usuLogin" size="30" value="" id="usuLogin" class="textField"/>
+									<input type="text" name="usuLogin" size="25" value="" id="usuLogin" class="textField"/>
 
 								</td>
 							</tr>
 						</table>
 						<table>
 							<tr>
-								<td>Senha SPTrans.:</td>
+								<td>Senha:</td>
 								<td>
-									<input type="password" name="_usuSenha" id="_usuSenha" size="35" class="textField" maxlength="12" value="" />
+									<input type="password" name="_usuSenha" id="_usuSenha" size="22" class="textField" maxlength="12" value="" /><i class="fas fa-question-circle" title="Sua senha deve conter no máximo 12 caracteres! Não há restrições quanto a caracteres especiais, maiúsculas ou minúsculas."></i>
 									<br>
 									<input type="hidden" name="usuSenha" id="usuSenha" />
 								</td>
@@ -306,16 +300,16 @@
 							<input type="hidden" name="showCaptcha" value="N" id="formLogin_showCaptcha"/>
 
 							
-						</table>
-						<table>
-							<tr>
+						</table >
+						<table text-align="center" >
+							<tr align="center">
 								<td>
-									<input type="button" id="btbLogin" value="Entrar" class="botao" 
-										onClick="javascript:loginSubmit();" style="width: 200px;padding:.4em 1em;font-family: Arial,sans-serif;" />
+									<input type="button" id="btbLogin" value="Entrar" class="botao"
+										onClick="javascript:loginSubmit();" style="width: 200px;padding:.4em 1em;font-family: Arial,sans-serif" />
 								</td>
-								<td>
+								<!--<td>
 									<a href="https://scapub.sbe.sptrans.com.br/sa/consultaEstudante/index.action">Estudante, imprima aqui o seu boleto </a>
-								</td>
+								</td> NF: Desnecessário! O estudante é redirecionado para outra página de login de qualquer forma!-->
 							</tr>
 						</table>
 					</form>
@@ -341,7 +335,7 @@
 	</div>
 	<div id="divEscolha" title="Acesso Público ao Sistema do Bilhete Único">
 					
-<form id="formEscolha" name="formEscolha" onsubmit="return true;" action="https://scapub.sbe.sptrans.com.br/sa/acessoPublico/selecionarUsuarioLogin.action;jsessionid=YdxI7xVxAWpmTiVWxkCaaAW4" method="POST">
+<form id="formEscolha" name="formEscolha" onsubmit="return true;" ="https://scapub.sbe.sptrans.com.br/sa/acessoPublico/selecionarUsuarioLogin.action;jsessionid=YdxI7xVxAWpmTiVWxkCaaAW4" method="POST">
 
 			<input type="hidden" name="fieldKey" value="" id="fieldKey"/>
 
@@ -376,7 +370,6 @@
 </table>
 </body>
 
-<!-- Mirrored from scapub.sbe.sptrans.com.br/sa/acessoPublico/index.action by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 24 Nov 2019 19:07:07 GMT -->
 </html><script id="f5_cspm">(function(){var f5_cspm={f5_p:'LFBKGBIIBLCPABIJJNLMACIFBOMBNKKKBIGCDDIMBDMBHLJCKEDOEGMBBBFAPIBIAALGNBEGOBHGOPPMAAEFGCHKLJCNPNHLIFPBJHNOLFKCBDHECLJHBGIDHDPHMBHL',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,32,(latency>>8));str=f5_cspm.set_byte(str,33,(latency&0xff));str=f5_cspm.set_byte(str,27,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='f5avraaaaaaaaaaaaaaaa='+encodeURIComponent(cookie_val)+';path=/';}
 return;}}
 catch(err){return;}

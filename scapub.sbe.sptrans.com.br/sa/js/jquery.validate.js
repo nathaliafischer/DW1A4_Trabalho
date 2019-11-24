@@ -393,7 +393,7 @@ jQuery.validator = function( options, form ) {
 	this.errorContext = this.labelContainer.length && this.labelContainer || jQuery(form);
 	this.containers = this.settings.errorContainer.add( this.settings.errorLabelContainer );
 	this.submitted = {};
-	this.reset();
+	//this.reset();
 	this.refresh();
 };
 
@@ -566,8 +566,8 @@ jQuery.extend(jQuery.validator, {
 		 */
 		resetForm: function() {
 			if( jQuery.fn.resetForm )
-				jQuery( this.currentForm ).resetForm();
-			this.prepareForm();
+				//jQuery( this.currentForm ).resetForm();
+			//this.prepareForm();
 			this.hideErrors();
 			this.elements.removeClass( this.settings.errorClass );
 		},
