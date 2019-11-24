@@ -1,0 +1,380 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130756609-2"></script>
+	<script src="/sa/assets/js/GoogleAnalytics/publicAnalytics.js"></script>
+		
+	<meta http-equiv="X-UA-Compatible" content="IE=7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+
+    <script type="text/javascript" src="/sa/dwr/util.js"></script>
+    <script type="text/javascript" src="/sa/js/sa.js"></script>
+    <script type="text/javascript" src="/sa/js/modal-message.js"></script>
+	<script type="text/javascript" src="/sa/js/jquery-ui-1.11.1.custom/external/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/sa/js/jquery-ui-1.11.1.custom/jquery-ui.js"></script>
+	<script type="text/javascript" src="/sa/js/md5.js"></script>
+	<script type="text/javascript" src="/sa/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="/sa/js/jquery.metadata.js"></script>
+    <script type="text/javascript" src="/sa/js/jquery.hotkeys-0.7.9.js"></script>
+    <script type="text/javascript" src="/sa/js/jquery.focusfields.js"></script>
+    <script type="text/javascript" src="/sa/js/jquery.maskedinput.1.3.2.js"></script>
+
+    <link href="/sa/js/jquery-ui-1.11.1.custom/jquery-ui.css?v=1" type="text/css" rel="stylesheet" />
+    <link href="/sa/js/jquery-ui-1.11.1.custom/jquery-ui.theme.css" type="text/css" rel="stylesheet" />
+    <link href="/sa/js/jquery-ui-1.11.1.custom/jquery-ui.structure.css" type="text/css" rel="stylesheet" />
+
+	<link href="/sa/css/layout2.css" type="text/css" rel="stylesheet"/>
+    <link href="/sa/css/modal-message.css" type="text/css" rel="stylesheet" />
+    <link href="/sa/css/jquery.tooltip.css" type="text/css" rel="stylesheet" />
+    <link href="/sa/css/acessoPublicoInterna.css" type="text/css" rel="stylesheet" />
+
+	<script>
+		var j = jQuery.noConflict();
+	</script>
+	<title>Sistema P&uacute;blico SPTrans - 34</title>
+</head>
+<body id="bdTela">
+<table style="width:960px; border:0px;" align="center" cellpadding="2" cellspacing="0" border="0">
+	<tr>
+		<td align="center">
+			
+
+
+
+	<script>
+	
+	window.history.go(1);
+
+	</script>
+
+
+<table style="width:800px; border:0px" align="center" cellpadding="2" cellspacing="0" bordercolor="#CCCCCC">
+
+	<tr>
+		<td colspan="3">
+			<div class="topSite">
+				<div class="nomeTop">Bilhete &Uacute;nico</div>
+				<div class="imgSPT">
+					<a href="http://www.sptrans.com.br" title="sptrans.com.br" target="_blank"><img src="/sa/imagens/logo_spt.png" alt="SPTrans" /></a>
+					<a href="http://www.prefeitura.sp.gov.br/cidade/secretarias/transportes/" title="Secretaria Municipal Transportes" target="_blank"><img src="/sa/imagens/logo_smt.png" alt="Secretaria Municipal de Transportes" /></a>
+				</div>
+			</div>
+		</td>
+	</tr>
+	
+</table>
+
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			
+
+<!--[if IE]>
+<style type="text/css">.titCad, .textoBco, #formCad { font-family:Arial;} #formCad { margin-top:-10px;}</style>
+<![endif]-->
+
+
+
+<script>
+	
+
+	j(document).ready(function() {
+		
+		
+		j('#formLogin').keypress(function(e) {
+			if(e.keyCode == 13) {
+				e.preventDefault();
+	        	
+				j(this).blur();
+
+				loginSubmit();
+			}
+		});
+
+		j('#usuLogin').blur(function(){
+			this.value = String(this.value).toLowerCase();
+		});
+
+		j('#refreshCaptcha').click(function() {
+			j('#captchaResponse').val('');
+			
+			j('#captchaImage').fadeOut(500, function() {
+				j('#captchaImage').attr('src', '/sa/img_captcha.jpg?'+(new Date()).getTime());
+			});
+			
+			j('#captchaImage').fadeIn(300);
+		});
+
+		if(j('#escolherUsuario').val() == 'S'){
+			j('#divEscolha').dialog({
+				modal: true,
+				dialogClass: 'no-close',
+				draggable: false,
+				resizable: false,
+				closeOnEscape: false,
+				//width: 900
+				width: 660
+			});
+		} else {
+			j('#divLogin' ).dialog({
+				modal: true,
+	            dialogClass: 'no-close',
+	            draggable: false,
+	            resizable: false,
+	            closeOnEscape: false,
+	          	//width: 900
+				width: 660
+			});
+
+			j('#usuLoginRg').focus();
+		}
+		
+		j('a[local=modal], input[type=button]').button();
+
+		showErrors();
+	});
+
+	function selecionarUsuario(id){
+		j('#fieldKey').val(id);
+		j('#formEscolha').submit();
+	}
+
+	function login(width, height){
+		msg = '<div id="divDlgLogin" align=center></div>';
+		dlgLogin.setSource(false);
+		dlgLogin.setHtmlContent(msg);
+		dlgLogin.setSize(width,height);
+		dlgLogin.setCssClassMessageBox('modalDialog_contentDivLogin');
+		dlgLogin.setShadowDivVisible(true);
+		dlgLogin.display();
+		j('divDlgLogin').appendChild(j('divLogin'));
+	}
+
+	function loginSubmit() {
+		j('#usuSenha').val(j('#_usuSenha').val() );
+		j('#_usuSenha').val('');
+		j( '#formLogin').submit();
+	}
+	
+	function resgatarSubmit() {
+		j('#formLogin').attr('action', 'iniciarResgateUsuario.action');
+		j('#_usuSenha').val('');
+		j( '#formLogin').submit();
+	}
+	
+	function showErrors() {
+		var msg = new String( $('divMessageError').innerHTML );
+		
+		if(msg.trim() !== ''){
+			if (j('#oferecerCadastro').val() == 'S' ){
+				j('#divMessageError').dialog({
+		            modal: true,
+		            draggable: false,
+		            resizable: false,
+		            width: 400,
+		            buttons: {
+						'Não': function() {
+							j(this).dialog( 'close' );
+						},
+						'Sim': function() {
+							window.location = '/sa/acessoPublico/novoUsuario.action';
+						}
+			        }
+				});
+			} else{
+				modalMensagemErros();
+			}
+		}
+		
+		return false;
+	}
+</script>
+
+
+
+<div id="divHidden" style="visibility: hidden; display: none;">
+	<div id="divMessageError" title="Aten&ccedil;&atilde;o">
+		
+		
+		
+	</div>
+	<div id="divLogin" title="Acesso Público ao Sistema do Bilhete Único" style="overflow: hidden;">
+		
+		
+		<table>
+			<tr style="display:table-row;">
+				<td class="ui-dialog-titlebar ui-widget-header-green ui-corner-all ui-helper-clearfix " style="width:250px;">Sou novo usu&aacute;rio</td>
+				<td class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix " style="width:390px;">Já sou cadastrado</td>
+				
+			</tr>
+			<tr style="display:table-row;">
+				<td style="text-align: center;padding-top: 10px;padding-bottom:10px;">
+					<a id="formLogin_" href="/sa/acessoPublico/novoUsuario.action">
+						<img src="/sa/imagens/logo_bu.png" alt="Cadastre-se" border="0" />
+					</a>
+				</td>
+				<td>
+								
+<form id="formLogin" name="formLogin" onsubmit="return true;" action="/sa/acessoPublico/login.action" method="POST">
+
+						<input type="hidden" name="usuLoginUserId" value="" id="usuLoginUserId"/>
+
+						<input type="hidden" name="escolherUsuario" value="" id="escolherUsuario"/>
+
+						<input type="hidden" name="oferecerCadastro" value="" id="oferecerCadastro"/>
+
+						
+						<table class="ui-dialog-titlebar ui-widget-header-white ui-corner-all ui-helper-clearfix dados">
+							<tr>
+								<td>RG.:</td>
+								<td>
+									<input type="text" name="usuLoginRg" size="15" maxlength="14" value="" id="usuLoginRg" class="textField"/>
+&nbsp;-&nbsp; 
+									<input type="text" name="usuLoginRgDigit" size="2" maxlength="2" value="" id="usuLoginRgDigit" class="textField"/>
+&nbsp;
+									<select name="usuLoginRgState" id="usuLoginRgState" class="Combo">
+    <option value="SP">SP</option>
+    <option value="AC">AC</option>
+    <option value="AL">AL</option>
+    <option value="AM">AM</option>
+    <option value="AP">AP</option>
+    <option value="BA">BA</option>
+    <option value="CE">CE</option>
+    <option value="DF">DF</option>
+    <option value="ES">ES</option>
+    <option value="GO">GO</option>
+    <option value="MA">MA</option>
+    <option value="MG">MG</option>
+    <option value="MS">MS</option>
+    <option value="MT">MT</option>
+    <option value="PA">PA</option>
+    <option value="PB">PB</option>
+    <option value="PE">PE</option>
+    <option value="PI">PI</option>
+    <option value="PR">PR</option>
+    <option value="RJ">RJ</option>
+    <option value="RN">RN</option>
+    <option value="RO">RO</option>
+    <option value="RR">RR</option>
+    <option value="RS">RS</option>
+    <option value="SC">SC</option>
+    <option value="SE">SE</option>
+    <option value="TO">TO</option>
+
+
+</select>
+
+								</td>
+							</tr>
+							<tr>
+								<td>CPF.:</td>
+								<td>
+									<input type="text" name="usuLoginCpf" size="23" maxlength="14" value="" id="usuLoginCpf" class="textField"/>
+
+								</td>
+							</tr>
+							<tr align="center">
+								<td colspan="2"><b>------- OU -------</b></td>
+							</tr>
+							<tr>
+								<td>E-mail.:</td>
+								<td>
+									<input type="text" name="usuLogin" size="30" value="" id="usuLogin" class="textField"/>
+
+								</td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<td>Senha SPTrans.:</td>
+								<td>
+									<input type="password" name="_usuSenha" id="_usuSenha" size="35" class="textField" maxlength="12" value="" />
+									<br>
+									<input type="hidden" name="usuSenha" id="usuSenha" />
+								</td>
+							</tr>
+							<input type="hidden" name="showCaptcha" value="N" id="formLogin_showCaptcha"/>
+
+							
+						</table>
+						<table>
+							<tr>
+								<td>
+									<input type="button" id="btbLogin" value="Entrar" class="botao" 
+										onClick="javascript:loginSubmit();" style="width: 200px;padding:.4em 1em;font-family: Arial,sans-serif;" />
+								</td>
+								<td>
+									<a href="/sa/consultaEstudante/index.action">Estudante, imprima aqui o seu boleto </a>
+								</td>
+							</tr>
+						</table>
+					</form>
+
+
+
+
+				</td>
+				
+			</tr>
+			<tr style="display:table-row;">
+				<td style="text-align: center;">
+					<a href="/sa/acessoPublico/novoUsuario.action" local="modal" style="width: 200px;">Iniciar Cadastro</a>
+				</td>
+				<td style="text-align: left;">
+					
+					<input type="button" id="btbResgatar" value="Esqueceu sua senha?" class="botao" 
+						onClick="javascript:resgatarSubmit();" style="width: 200px;padding:.4em 1em;margin-top:-1px;font-family: Arial,sans-serif;" />
+				</td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+	<div id="divEscolha" title="Acesso Público ao Sistema do Bilhete Único">
+					
+<form id="formEscolha" name="formEscolha" onsubmit="return true;" action="/sa/acessoPublico/selecionarUsuarioLogin.action" method="POST">
+
+			<input type="hidden" name="fieldKey" value="" id="fieldKey"/>
+
+		</form>
+
+
+
+
+		<table style="width: 620px; text-align: center;">
+			<tr>
+				<td>
+					<b>Selecione um usu&aacute;rio abaixo para acessar o sistema</b>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<hr>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" style="width: 400px" value='Voltar &agrave; Tela Inicial da Aplica&ccedil;&atilde;o' 
+						onclick='window.location=" /sa/acessoPublico"' />
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+		</td>
+	</tr>
+</table>
+</body>
+</html><script id="f5_cspm">(function(){var f5_cspm={f5_p:'JAODPIDIEMNDMEGDJKHMDFPKAMKNAPHPNJHLBCGBIMOBGMOADFDNGBKECLOANHDGBDBMNIOGBBLFAEICAOCGDPMEOKPKKGJMMANMCDNOAJOGFMCHLNJKOEOPAFENNILO',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,32,(latency>>8));str=f5_cspm.set_byte(str,33,(latency&0xff));str=f5_cspm.set_byte(str,27,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='f5avraaaaaaaaaaaaaaaa='+encodeURIComponent(cookie_val)+';path=/';}
+return;}}
+catch(err){return;}
+setTimeout(f5_cspm.wait_perf_data,100);return;},go:function(){var chunk=window.document.cookie.split(/\s*;\s*/);for(var i=0;i<chunk.length;++i){var pair=chunk[i].split(/\s*=\s*/);if(pair[0]=='f5_cspm'&&pair[1]=='1234')
+{var d=new Date();d.setTime(d.getTime()-1000);window.document.cookie='f5_cspm=;expires='+d.toUTCString()+';path=/;';setTimeout(f5_cspm.wait_perf_data,100);}}}}
+f5_cspm.go();}());</script>
