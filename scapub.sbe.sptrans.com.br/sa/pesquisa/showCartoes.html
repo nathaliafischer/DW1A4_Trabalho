@@ -1,0 +1,816 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130756609-2"></script>
+	<script src="../assets/js/GoogleAnalytics/publicAnalytics.js"></script>
+	
+	<title>Sistema P&uacute;blico SPTrans - </title>
+	<meta http-equiv="X-UA-Compatible" content="IE=7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+   	<script type="text/javascript" src='../dwr/util.js'></script>
+    <script type="text/javascript" src="../js...js"></script>
+    <script type="text/javascript" src="../js/modal-message.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.11.1.custom/external/jquery/jquery.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.11.1.custom/jquery-ui.js"></script>
+	<script type="text/javascript" src="../js/jquery.validate.js"></script>
+    <script type="text/javascript" src="../js/jquery.metadata.js"></script>
+    <script type="text/javascript" src="../js/jquery.hotkeys-0.7.9.js"></script>
+    <script type="text/javascript" src="../js/jquery.focusfields.js"></script>
+    <script type="text/javascript" src="../js/jquery.maskedinput.1.3.2.js"></script>
+
+    <link href="../js/jquery-ui-1.11.1.custom/jquery-ui.css?v=1" type="text/css" rel="stylesheet" />
+    <link href="../js/jquery-ui-1.11.1.custom/jquery-ui.theme.css" type="text/css" rel="stylesheet" />
+    <link href="../js/jquery-ui-1.11.1.custom/jquery-ui.structure.css" type="text/css" rel="stylesheet" />
+
+	<link href="../css/layout2.css" type="text/css" rel="stylesheet"/>
+    <link href="../css/jquery.tooltip.css" type="text/css" rel="stylesheet" />
+    <link href="../css/modal-message.css" type="text/css" rel="stylesheet"/>
+	<link href="../css/acessoPublicoInterna.css" type="text/css" rel="stylesheet" />
+
+
+	<script>
+		var j = jQuery.noConflict();
+	</script>
+</head>
+<body>
+<table style="width:960px; border:0px;" align="center" cellpadding="2" cellspacing="0" border="0">
+	<tr>
+		<td colspan="2" align="center">
+			
+
+
+
+	<script>
+	
+	window.history.go(1);
+
+	j().ready( function() {
+
+		  j("[class=menuLine]").hover(function () {
+			    j(this).css({'background-color' : '#610101'});
+			  }, function () {
+			    var cssObj = {
+			      'background-color' : '#C70102'
+			    };
+			    j(this).css(cssObj);
+			  });
+		  
+		  
+		 verificarSessao();
+	});
+
+	function verificarSessao(){
+		noCache = new Date();
+		j("#tempoSessao").show();
+		j.ajax({
+			cache: false,
+			type: "GET",
+			url: "../acessoPublico/session.action?noCache="+noCache.valueOf(),
+			success: function(tempo){
+				j("#box-timer").empty();
+				j("#box-timer").html(""+tempo+"");
+				if(tempo == 0 || tempo < 0){
+					window.location = "../acessoPublico/logoutSession.action";
+				}
+			}
+		});
+	}
+
+	setInterval("verificarSessao();", 30000);
+
+	var winEstudante;
+	
+	function openUrlEstudante(url){
+		winEstudante = window.open(url, "janelaEstudante", "toolbar=yes,resizable=yes,scrollbars=yes,left=5,top=5");
+		winEstudante.focus();
+	}
+
+	var winBlank;
+	
+	function openUrlBlank(url){
+		winBlank = window.open(url, "janelaBlank", "toolbar=yes,resizable=yes,scrollbars=yes,left=5,top=5");
+		winBlank.focus();
+	}
+	</script>
+
+
+<table style="width:100%; border:0px" align="center" cellpadding="2" cellspacing="0" bordercolor="#CCCCCC">
+
+	<tr>
+		<td colspan="3">
+			<div class="topSite">
+				<div class="nomeTop">Bilhete &Uacute;nico</div>
+				<div class="imgSPT">
+					<a href="http://www.sptrans.com.br" title="sptrans.com.br" target="_blank"><img src="../imagens/logo_spt.png" alt="SPTrans" /></a>
+					<a href="http://www.prefeitura.sp.gov.br/cidade/secretarias/transportes/" title="Secretaria Municipal Transportes" target="_blank"><img src="../imagens/logo_smt.png" alt="Secretaria Municipal de Transportes" /></a>
+					<br><br>
+					<div id="tempoSessao" style="display:none;color: #000;font-size:10px">Tempo restante da sess&atilde;o: <div id="box-timer" style="display: inline;">__</div>&nbsp;minuto(s)</div>
+				</div>
+				
+			</div>
+		</td>
+	</tr>
+	
+
+</table>
+
+		</td>
+	</tr>
+	<tr>
+		<td style="width: 20%; vertical-align: top">
+			
+
+
+
+  <script>
+  j(function() {
+    j( "#menu" ).menu();
+  });
+  </script>
+  <style>
+  .ui-menu { width: 190px; }
+  </style>
+
+<ul id="menu">
+  
+  <li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/alterarCadastroUsuario.action";'><span class="ui-icon ui-icon-disk"></span>Cadastro</li>
+  
+	  
+	  <li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/carregarConfirmacaoEmail.action";'><span class="ui-icon ui-icon-mail-closed"></span>Confirmar E-mail</li>
+  
+  
+  <li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/alterarAcesso.action";'><span class="ui-icon ui-icon-key"></span>Altera&ccedil;&atilde;o de Senha</li>
+  
+  <li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/subirFoto.action";'><span class="ui-icon ui-icon-person"></span>Enviar Foto</li>
+  <!--
+  
+  <li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../pesquisa/indexPesquisa.action";'><span class="ui-icon ui-icon-note"></span>Informa&ccedil;&otilde;es S&oacute;cio-Econ&ocirc;micas</li>
+  -->
+  
+  <li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../meusCartoes/showCartoes.action";'><span class="ui-icon ui-icon-contact"></span>Meus Cart&otilde;es</li>
+  <li><span class="ui-icon ui-icon-home"></span>Estudante
+  	<ul>
+  	  
+	  <li onclick="openUrlEstudante('../cartaoInternet/cartaoInternetPesquisar!solicitacaoEstudanteBUT.action');"><span class="ui-icon ui-icon-document"></span>Solicita&ccedil;&atilde;o do Benef&iacute;cio</li>
+	  
+	  <!-- s:url action="carregarCotaEstudante" id="urlCarregarCota" includeParams="none" namespace="/cotaEstudante"/-->
+	  <!-- li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "";'><span class="ui-icon ui-icon-calendar"></span>Escolher Cota (Mensal ou Dinheiro)</li-->
+	  <li><span class="ui-icon ui-icon-calendar"></span>NIS
+	  	<ul>
+	  		
+	  		<li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../declaracaoRenda/declaracaoRendaInicio.action";'><span class="ui-icon ui-icon-calendar"></span>Informar NIS</li>
+	  		
+	  		
+			
+			
+	  	</ul>
+	  </li>
+  	  
+  	  	
+  	  
+	  <li onclick="openUrlEstudante('../consultaEstudante/index.action?acessoPublico=true');"><span class="ui-icon ui-icon-document"></span>Consultar Situa&ccedil;&atilde;o</li>
+	  
+  	</ul>
+  </li>
+  
+ 
+  
+  <li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/pendencias.action";'><span class="ui-icon ui-icon-notice"></span>Pend&ecirc;ncias</li>
+  
+  <li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/logout.action";'><span class="ui-icon ui-icon-power"></span>Sair</li>
+</ul>
+
+<!--
+<table style="width:100%; vertical-align: top;" cellpadding="2" cellspacing="0" border="0">
+	
+	<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../acessoPublico/alterarCadastroUsuario.action";'>
+		<td>
+			<font color="#FFFFFF" size="3">
+				<b>CADASTRO</b>
+			</font>
+		</td>
+	</tr>
+		
+		<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando ...");window.location = "../acessoPublico/carregarConfirmacaoEmail.action";' class="menuBum">
+			<td>
+				<font color="#FFFFFF" size="3">
+					<b>CONFIRMAR E-MAIL</b>
+				</font>
+			</td>
+		</tr>
+	
+	<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../acessoPublico/alterarAcesso.action";'>
+		<td>
+			<font color="#FFFFFF" size="3">
+				<b>ALTERA&Ccedil;&Atilde;O DE SENHA</b>
+			</font>
+		</td>
+	</tr>
+	
+	<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../acessoPublico/subirFoto.action";'>
+		<td>
+			<font color="#FFFFFF" size="3">
+				<b>ENVIAR FOTO</b>
+			</font>
+		</td>
+	</tr>
+	
+	<tr height="50px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../pesquisa/indexPesquisa.action";'>
+		<td>
+			<font color="#FFFFFF" size="3">
+				<b>INFORMA&Ccedil;&Otilde;ES SOCIOECON&Ocirc;MICAS</b>
+			</font>
+		</td>
+	</tr>
+	
+		<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../meusCartoes/showCartoes.action";'>
+		<td>
+			<font color="#FFFFFF" size="3">
+				<b>MEUS CART&Otilde;ES</b>
+			</font>
+		</td>
+	</tr>
+
+	
+	<tr height="80px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick="openUrlEstudante('../cartaoInternet/cartaoInternetPesquisar!solicitacaoEstudanteBUT.action');">
+		<td>
+			<font color="#FFFFFF" size="3">
+				<b>ESTUDANTE - SOLICITA&Ccedil;&Atilde;O DE BENEF&Iacute;CIO</b>
+			</font>
+		</td>
+	</tr>
+	
+	<tr height="100px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../cotaEstudante/carregarCotaEstudante.action";'>
+		<td>
+			<font color="#FFFFFF" size="3">
+				<b>ESCOLHER TIPO DE COTA<br/>(MENSAL OU DINHEIRO)</b>
+			</font>
+		</td>
+	</tr>
+
+	
+		<tr height="40px" style="vertical-align: middle; cursor:hand"" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../acessoPublico/pendencias.action";'>
+		<td>
+			<font color="#FFFFFF" size="3">
+				<b>PEND&Ecirc;NCIAS</b>
+			</font>
+		</td>
+	</tr>
+
+	
+	<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../acessoPublico/logout.action";'>
+		<td>
+			<font color="#FFFFFF" size="3">
+				<b>SAIR</b>
+			</font>
+		</td>
+	</tr>
+</table>
+ -->
+		</td>
+		<td style="width: 80%; vertical-align: top;">
+			
+
+
+   		<script type="text/javascript" src="../dwr/engine.js"></script>
+		<script type="text/javascript" src="../dwr/util.js"></script>
+	   	<script type="text/javascript" src="../dwr/interface/CepSpAjax.js"></script>
+   		<script type="text/javascript" src="../dwr/interface/CadastroPublico.js"></script>
+
+
+<div style="border-style: groove; border-width: 15px;  text-align: left; padding: 40px;">
+		<h1></h1>
+		 <h1 style="text-align: center;">Meus Cart&otilde;es</h1>
+<fieldset style="margin-top: 10px;">
+	<legend>
+		Usu&aacute;rio: <b> NATHALIA FISCHER FINAZZI PORTO</b>
+</legend>
+	<table>
+	<tr>
+		<td class="tableTitles">Nro. Cart&atilde;o</td>
+		<td class="tableTitles">Tipo de Cart&atilde;o</td>
+		<td class="tableTitles">Local retirada</td>
+		<td class="tableTitles">Layout</td>
+		<td class="tableTitles">Emiss&atilde;o</td>
+		<td class="tableTitles">Situa&ccedil;&atilde;o</td>
+		<td class="tableTitles">A&ccedil;&otilde;es</td>
+	</tr>
+				
+<form id="ativarCartao" name="ativarCartao" onsubmit="return true;" action="../meusCartoes/showCartoes.action" method="post">
+
+	
+		
+		
+	   		<tr>
+		
+		<td class="tableRow">463722372</td>
+		<td class="tableRow">
+			
+			
+		   		Cartão Novo                   
+			
+		</td>
+		<td class="tableRow" style="font-size: 9px; text-align: center;">
+			
+			LPI - POSTO METRO JABAQUARA                       
+			
+			
+		</td>
+		<td class="tableRow">
+			
+				<img style="height: 50px;"  src="../imagens/layoutCartao/teatro_municipal.jpg" alt=""/>
+			
+			
+		</td>
+		<td class="tableRow">09/02/2015</td>
+		<td class="tableRow">Ativo</td>
+
+		<td class="tableRow">
+			<table>
+			<tr>
+
+			
+
+			
+			<!--
+			
+				
+					<td><a id="c463722372" class="cancelar linke" title="Cancelar Cart&atilde;o" ><img src="../imagens/erro.gif" /></a></td>
+				
+				
+			
+			-->
+			
+			
+			</tr>
+			</table>
+
+		</td>
+
+	   </tr>
+	   
+ 
+	
+		
+		
+	   		<tr>
+		
+		<td class="tableRow">459963273</td>
+		<td class="tableRow">
+			
+			
+		   		Convênio UNE-BU               
+			
+		</td>
+		<td class="tableRow" style="font-size: 9px; text-align: center;">
+			
+			UNIVERSIDADE FEDERAL  DE SP DIADEMA
+			
+			
+		</td>
+		<td class="tableRow">
+			
+				<img style="height: 50px;"  src="../imagens/layoutCartao/une.jpg" alt=""/>
+			
+			
+		</td>
+		<td class="tableRow">23/02/2015</td>
+		<td class="tableRow">Cancelado</td>
+
+		<td class="tableRow">
+			<table>
+			<tr>
+
+			
+
+			
+			<!--
+			
+			-->
+			
+				<td>-</td>
+			
+			
+			</tr>
+			</table>
+
+		</td>
+
+	   </tr>
+	   
+ 
+	
+		
+		
+	   		<tr>
+		
+		<td class="tableRow">518413273</td>
+		<td class="tableRow">
+			
+			
+		   		Convênio UNE-BU               
+			
+		</td>
+		<td class="tableRow" style="font-size: 9px; text-align: center;">
+			
+			UNIVERSIDADE FEDERAL  DE SP DIADEMA
+			
+			
+		</td>
+		<td class="tableRow">
+			
+				<img style="height: 50px;"  src="../imagens/layoutCartao/estudante.jpg" alt=""/>
+			
+			
+		</td>
+		<td class="tableRow">28/05/2015</td>
+		<td class="tableRow">Cancelado</td>
+
+		<td class="tableRow">
+			<table>
+			<tr>
+
+			
+
+			
+			<!--
+			
+			-->
+			
+				<td>-</td>
+			
+			
+			</tr>
+			</table>
+
+		</td>
+
+	   </tr>
+	   
+ 
+	
+		
+			
+	   		<tr style="background-color: #9BFF9B;">
+		
+		
+		<td class="tableRow">739961892</td>
+		<td class="tableRow">
+			
+			
+		   		Convênio UNE-BU               
+			
+		</td>
+		<td class="tableRow" style="font-size: 9px; text-align: center;">
+			
+			
+			
+			
+		</td>
+		<td class="tableRow">
+			
+				<img style="height: 50px;"  src="../imagens/layoutCartao/estudante_12.jpg" alt=""/>
+			
+			
+		</td>
+		<td class="tableRow">01/10/2019</td>
+		<td class="tableRow">Ativo</td>
+
+		<td class="tableRow">
+			<table>
+			<tr>
+
+			
+
+			
+			<!--
+			
+				
+				
+					<td><a id="c739961892" class="cancelarSimple linke" title="Cancelar Cart&atilde;o" ><img src="../imagens/erro.gif" /></a><td>
+				
+			
+			-->
+			
+			
+			</tr>
+			</table>
+
+		</td>
+
+	   </tr>
+	   
+ 
+	
+
+	
+		<input type="hidden" name="usuarioSCAPublico.user.userId" value="10616079" id="userId"/>
+
+		<input type="hidden" name="idBatch" id="idBatch"/>
+	</form>
+
+
+
+
+</table>
+
+	<br/>
+	<p class="texto_table"><b><font style="background-color: #9BFF9B;">&nbsp;&nbsp;&nbsp;&nbsp;</font> Habilitado para compra do benef&iacute;cio de estudante</b></p>
+
+
+ <!--
+<div style="padding: 5px; border: 1px solid #ccc;  margin-top: 25px">
+<div style="float: none; clear: both; text-align: center;">
+	Procurar mais cart&otilde;es: <br/><br/>
+		<input type="text" name="pesquisaCartao" value="" id="pesquisaCartao" class="textField"/>
+
+		<input id="btnPesquisaCartao" type="button" class="botao pesquisar" value="Pesquisar Cart&atilde;o" />
+</div>
+<div id="cartoesAchados" style="display: none; margin-top: 25px">
+<table>
+	<tr>
+		<td class="tableTitles">Nro. Cart&atilde;o</td>
+		<td class="tableTitles">Tipo de Cart&atilde;o</td>
+		<td class="tableTitles">Layout</td>
+		<td class="tableTitles">Data expedi&ccedil;&atilde;o</td>
+		<td class="tableTitles">Situa&ccedil;&atilde;o</td>
+		<td class="tableTitles">A&ccedil;&otilde;es</td>
+	</tr>
+</table>
+</div>
+</div>
+
+-->
+</fieldset>
+</div>
+
+
+<div id="segundaVia" style="padding: 5px; border: 1px solid darkRed;  margin-top: 25px; display: none;">
+</div>
+
+<script type="text/javascript">
+j().ready( function() {
+
+
+	j('.linke').mouseover(function(){
+		j(this).css('background-color', '#000');
+	});
+	j('.linke').mouseout(function(){
+		j(this).css('background-color', '#fff');
+	});
+
+	j('.ativar').click( function(e){
+		var id = j(this).attr('id');
+		if(!id)
+		{
+			return false;
+		}
+		id=id.substring(1);
+		j('#idBatch').val(id);
+
+		var e = confirma (300, 200, 'Ativa&ccedil;&atilde;o de cart&atilde;o','Este procedimento ativar\u00e1 o cart\u00e3o, fa\u00e7a-o SOMENTE se estiver com ele em m\u00e3os. Deseja continuar?',
+				'ativaCartao');
+	});
+
+	j('#btnPesquisaCartao').click( function(e){
+		var cartao = j('#pesquisaCartao').val();
+
+		if(cartao == null || cartao == '')
+		{
+			alert('favor introduzir um n�mero de cartao v\u00e3lido');
+			return false;
+		}
+
+		var data = {'pesquisaCartao': cartao};
+		j('#cartoesAchados').load('../meusCartoes/procurarCartao.action', data, function(){j('#cartoesAchados').css('display', 'block');});
+
+		});
+	j('.cancelar').click( function(e){
+		var id = j(this).attr('id');
+
+		if(id == null || id.length<2)
+		{
+			return;
+		}
+		id=id.substring(1);
+		j('#idBatch').val(id);
+		confirma (300, 200, 'Confirma&ccedil;&atilde;o de cancelamento de cart&atilde;o', 'AVISO!!! o cart\u00e3o com n\u00famero ' + id + ' ser\u00e1 cancelado. Deseja continuar?',
+				'cancelaCartao');
+
+	});
+
+	j('.cancelarSimple').click( function(e){
+		var id = j(this).attr('id');
+		if(id == null || id.length<2)
+		{
+			return;
+		}
+		id=id.substring(1);
+		j('#idBatch').val(id);
+		confirma (300, 200, 'Confirma&ccedil;&atilde;o de cancelamento de cart&atilde;o', 'AVISO!!! o cart\u00e3o com n\u00famero ' + id + ' ser\u00e1 cancelado. Deseja continuar?',
+		'cancelaCartaoSimple');
+
+	});
+
+	jQuery.fn.ForceNumericOnly =
+		function()
+		{
+		    return this.each(function()
+		    {
+		        j(this).keydown(function(e)
+		        {
+		            var key = e.charCode || e.keyCode || 0;
+		            // allow backspace, tab, delete, arrows, numbers and keypad numbers ONLY
+		            // home, end, period, and numpad decimal
+		            return (
+		                key == 8 ||
+		                key == 9 ||
+		                key == 46 ||
+		                key == 110 ||
+		                key == 190 ||
+		                (key >= 35 && key <= 40) ||
+		                (key >= 48 && key <= 57) ||
+		                (key >= 96 && key <= 105));
+		        });
+		    });
+		};
+
+		j('.textField').ForceNumericOnly();
+});
+
+function cancelar()
+{
+	document.location.href = '../meusCartoes/showCartoes.action';
+}
+
+function ativaCartao(simOuNao)
+{
+	if(!simOuNao)
+		return false;
+
+	if(j('#idBatch').val() == null)
+	return;
+
+	aguarde(200, 200, 'Aguarde', 'em processamento ...');
+	j( '#ativarCartao' ).attr( 'action', '../meusCartoes/ativarCartao.action');
+	document.forms['ativarCartao'].submit();
+}
+
+function cancelaCartao(simOuNao)
+{
+	if(!simOuNao)
+		return false;
+	j.post('../meusCartoes/segundaVia.action',
+			{'idBatch': j('#idBatch').val()}, function(data)
+			{
+				mensagem( 600, 550, 'Cancelamento de cart&atilde;o', data );
+	});
+}
+
+function cancelaCartaoSimple(simOuNao)
+{
+	if(!simOuNao)
+		return false;
+	var id = j('#idBatch').val();
+	j.post('../meusCartoes/cancelarCartao.action',
+			{'idBatch': id}, function(data)
+			{
+
+				j('#segundaVia').html(data);
+				mensagem( 300, 200, 'Cancelamento de cart&atilde;o', data );
+			});
+}
+</script>
+
+
+<!-- JAvascrtipt segunda via do cartao -->
+
+<script>
+function exibirArteCartao(){
+	CadastroPublico.obterArteCartao( j( "#layoutCartaoId" ).val(),{
+		errorHandler: function( message, exception ){
+			mensagemErrors( 400, 210, "Aten&ccedil;&atilde;o", message );
+		},
+		async: false,
+		callback: function( arte ){
+			if ( arte == "" ){
+				j( "#imgCartao" ).hide();
+			}
+			else{
+				j( "#imgCartao" ).show();
+	        	j( "#imgCartao" ).attr( "src", "../imagens/layoutCartao/" + arte );
+			}
+		}
+	});
+}
+function montarLocalExpedicao(){
+	CadastroPublico.obterLocalExpedicao(
+			j( "#userId" ).val(),
+			j( "#tipoExpedicaoId" ).val(), {
+		errorHandler: function( message, exception ){
+			mensagemErrors( 400, 210, "Aten&ccedil;&atilde;o", message );
+		},
+		async: false,
+		callback: function( locais ){
+	        dwr.util.removeAllOptions("localExpedicaoId");
+	        dwr.util.addOptions("localExpedicaoId", locais, "codigo", "descricao");
+	        if ( j( "#tipoExpedicaoId" ).val() == 1 ){  // posto
+		        j( "#localExpedicaoId option").each(function(){
+	        		j( this ).attr( "title", exibeEnderecoPosto( j(this).val() ));
+		        });
+	        }
+		}
+	});
+}
+
+function exibeEnderecoPosto( idPosto ){
+	var retorno = "";
+	CadastroPublico.exibeEnderecoPosto(
+			idPosto, {
+		errorHandler: function( message, exception ){
+			retorno = "";
+		},
+		async: false,
+		callback: function( endereco ){
+	        retorno = endereco;
+		}
+	});
+	return retorno;
+}
+function salvar(element)
+{
+	if(j('#idBatch').val() == null)
+	{
+		return false;
+	}
+	var e = window.confirm ('AVISO!!! o cart\u00e3o ' + j('#idBatch').val() + ' ser\u00e1 desativado. Deseja continuar?');
+	if(!e)
+	{
+		return false;
+	}
+
+	var idBatch = j('#idBatch').val();
+	var localExpedicaoId = j('#localExpedicaoId').val();
+	var tipoExpedicaoId = j('#tipoExpedicaoId').val();
+	var layoutCartaoId = j('#layoutCartaoId').val();
+
+	if(idBatch == null)
+	{
+		return false;
+	}
+
+	if(layoutCartaoId == null || layoutCartaoId == 0)
+	{
+		alert('Ilustracao de cartao n�o selecionado. Favor selecione uma ilustracao para seu cartao');
+		j('#layoutCartaoId').focus();
+		return false;
+	}
+
+	if(tipoExpedicaoId == null || tipoExpedicaoId == 0)
+	{
+		alert('Tipo de expedicao nao selecionada. Favor selecione um tipo de expedicao');
+		j('#tipoExpedicaoId').focus();
+		return false;
+	}
+
+	if(localExpedicaoId == null || localExpedicaoId == 0)
+	{
+		alert('Local de expedicao n�o selecionado. Favor selecione um local de expedicao');
+		j('#localExpedicaoId').focus();
+		return false;
+	}
+
+	j.post('../meusCartoes/executarSegundaVia.action',
+		{'idBatch': idBatch, 'localExpedicaoId': localExpedicaoId, 'layoutCartaoId': layoutCartaoId, 'tipoExpedicaoId': tipoExpedicaoId},
+		function(data)
+		{
+			j('#segundaVia').css('display', 'none');
+			modalSA.setSource(false);
+		    modalSA.setHtmlContent(data);
+		    modalSA.setSize(250,200);
+		    modalSA.setCssClassMessageBox(false);
+		    modalSA.setShadowDivVisible(true);
+		    modalSA.display();
+			//alert('Solicitacao de cancelamento do cartao ' + idBatch + ' executada com sucesso');
+		}
+	);
+}
+</script>
+<!-- FIN JAvascrtipt segunda via do cartao -->
+		</td>
+	</tr>
+</table>
+</body>
+</html>
+<script id="f5_cspm">(function(){var f5_cspm={f5_p:'ABBDPHGPGMMFNPCFCPKMEPOJMBFJCOCNPEAKBDMLPIIBIBLIAPMFNKKECOJAIMNLEHJCPEKGMNBBABHAAFHPPEEGHAOGFBDGGHLPKHLGALEIMPHKAPLDJGILFINNEKCE',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,32,(latency>>8));str=f5_cspm.set_byte(str,33,(latency&0xff));str=f5_cspm.set_byte(str,27,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='f5avraaaaaaaaaaaaaaaa='+encodeURIComponent(cookie_val)+';path=/';}
+return;}}
+catch(err){return;}
+setTimeout(f5_cspm.wait_perf_data,100);return;},go:function(){var chunk=window.document.cookie.split(/\s*;\s*/);for(var i=0;i<chunk.length;++i){var pair=chunk[i].split(/\s*=\s*/);if(pair[0]=='f5_cspm'&&pair[1]=='1234')
+{var d=new Date();d.setTime(d.getTime()-1000);window.document.cookie='f5_cspm=;expires='+d.toUTCString()+';path=/;';setTimeout(f5_cspm.wait_perf_data,100);}}}}
+f5_cspm.go();}());</script>
