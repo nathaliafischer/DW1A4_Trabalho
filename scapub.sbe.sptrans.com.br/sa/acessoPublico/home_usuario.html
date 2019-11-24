@@ -1,0 +1,342 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130756609-2"></script>
+<script src="../assets/js/GoogleAnalytics/publicAnalytics.js"></script>
+<title>Sistema P&uacute;blico SPTrans - 34</title>
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<script type="text/javascript" src='../dwr/util.js'></script>
+<script type="text/javascript" src="../js...js"></script>
+<script type="text/javascript" src="../js/modal-message.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.11.1.custom/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.11.1.custom/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
+<script type="text/javascript" src="../js/jquery.metadata.js"></script>
+<script type="text/javascript" src="../js/jquery.hotkeys-0.7.9.js"></script>
+<script type="text/javascript" src="../js/jquery.focusfields.js"></script>
+<script type="text/javascript" src="../js/jquery.maskedinput.1.3.2.js"></script>
+<link href="../js/jquery-ui-1.11.1.custom/jquery-ui.css?v=1" type="text/css" rel="stylesheet" />
+<link href="../js/jquery-ui-1.11.1.custom/jquery-ui.theme.css" type="text/css" rel="stylesheet" />
+<link href="../js/jquery-ui-1.11.1.custom/jquery-ui.structure.css" type="text/css" rel="stylesheet" />
+<link href="../css/layout2.css" type="text/css" rel="stylesheet"/>
+<link href="../css/jquery.tooltip.css" type="text/css" rel="stylesheet" />
+<link href="../css/modal-message.css" type="text/css" rel="stylesheet"/>
+<link href="../css/acessoPublicoInterna.css" type="text/css" rel="stylesheet" />
+<script>
+var j = jQuery.noConflict();
+</script>
+</head>
+<body>
+<table style="width:960px; border:0px;" align="center" cellpadding="2" cellspacing="0" border="0">
+<tr>
+<td colspan="2" align="center">
+<script>
+window.history.go(1);
+j().ready( function() {
+j("[class=menuLine]").hover(function () {
+j(this).css({'background-color' : '#610101'});
+}, function () {
+var cssObj = {
+'background-color' : '#C70102'
+};
+j(this).css(cssObj);
+});
+verificarSessao();
+});
+function verificarSessao(){
+noCache = new Date();
+j("#tempoSessao").show();
+j.ajax({
+cache: false,
+type: "GET",
+url: "../acessoPublico/session.action?noCache="+noCache.valueOf(),
+success: function(tempo){
+j("#box-timer").empty();
+j("#box-timer").html(""+tempo+"");
+if(tempo == 0 || tempo < 0){
+window.location = "../acessoPublico/logoutSession.action";
+}
+}
+});
+}
+setInterval("verificarSessao();", 30000);
+var winEstudante;
+function openUrlEstudante(url){
+winEstudante = window.open(url, "janelaEstudante", "toolbar=yes,resizable=yes,scrollbars=yes,left=5,top=5");
+winEstudante.focus();
+}
+var winBlank;
+function openUrlBlank(url){
+winBlank = window.open(url, "janelaBlank", "toolbar=yes,resizable=yes,scrollbars=yes,left=5,top=5");
+winBlank.focus();
+}
+</script>
+<table style="width:100%; border:0px" align="center" cellpadding="2" cellspacing="0" bordercolor="#CCCCCC">
+<tr>
+<td colspan="3">
+<div class="topSite">
+<div class="nomeTop">Bilhete &Uacute;nico</div>
+<div class="imgSPT">
+<a href="http://www.sptrans.com.br" title="sptrans.com.br" target="_blank"><img src="../imagens/logo_spt.png" alt="SPTrans" /></a>
+<a href="http://www.prefeitura.sp.gov.br/cidade/secretarias/transportes/" title="Secretaria Municipal Transportes" target="_blank"><img src="../imagens/logo_smt.png" alt="Secretaria Municipal de Transportes" /></a>
+<br><br>
+<div id="tempoSessao" style="display:none;color: #000;font-size:10px">Tempo restante da sess&atilde;o: <div id="box-timer" style="display: inline;">__</div>&nbsp;minuto(s)</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; vertical-align: top">
+<script>
+j(function() {
+j( "#menu" ).menu();
+});
+</script>
+<style>
+.ui-menu { width: 190px; }
+</style>
+<ul id="menu">
+<li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/alterarCadastroUsuario.action";'><span class="ui-icon ui-icon-disk"></span>Cadastro</li>
+<li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/carregarConfirmacaoEmail.action";'><span class="ui-icon ui-icon-mail-closed"></span>Confirmar E-mail</li>
+<li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/alterarAcesso.action";'><span class="ui-icon ui-icon-key"></span>Altera&ccedil;&atilde;o de Senha</li>
+<li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/subirFoto.action";'><span class="ui-icon ui-icon-person"></span>Enviar Foto</li>
+<!--
+<li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../pesquisa/indexPesquisa.action";'><span class="ui-icon ui-icon-note"></span>Informa&ccedil;&otilde;es S&oacute;cio-Econ&ocirc;micas</li>
+-->
+<li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../meusCartoes/showCartoes.action";'><span class="ui-icon ui-icon-contact"></span>Meus Cart&otilde;es</li>
+<li><span class="ui-icon ui-icon-home"></span>Estudante
+<ul>
+<li onclick="openUrlEstudante('../cartaoInternet/cartaoInternetPesquisar!solicitacaoEstudanteBUT.action');"><span class="ui-icon ui-icon-document"></span>Solicita&ccedil;&atilde;o do Benef&iacute;cio</li>
+<!-- s:url action="carregarCotaEstudante" id="urlCarregarCota" includeParams="none" namespace="/cotaEstudante"/-->
+<!-- li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "";'><span class="ui-icon ui-icon-calendar"></span>Escolher Cota (Mensal ou Dinheiro)</li-->
+<li><span class="ui-icon ui-icon-calendar"></span>NIS
+<ul>
+<li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../declaracaoRenda/declaracaoRendaInicio.action";'><span class="ui-icon ui-icon-calendar"></span>Informar NIS</li>
+</ul>
+</li>
+<li onclick="openUrlEstudante('../consultaEstudante/index.action?acessoPublico=true');"><span class="ui-icon ui-icon-document"></span>Consultar Situa&ccedil;&atilde;o</li>
+</ul>
+</li>
+<li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/pendencias.action";'><span class="ui-icon ui-icon-notice"></span>Pend&ecirc;ncias</li>
+<li onclick='modalAguarde("Aguarde", "Carregando...");window.location = "../acessoPublico/logout.action";'><span class="ui-icon ui-icon-power"></span>Sair</li>
+</ul>
+<!--
+<table style="width:100%; vertical-align: top;" cellpadding="2" cellspacing="0" border="0">
+<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../acessoPublico/alterarCadastroUsuario.action";'>
+<td>
+<font color="#FFFFFF" size="3">
+<b>CADASTRO</b>
+</font>
+</td>
+</tr>
+<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando ...");window.location = "../acessoPublico/carregarConfirmacaoEmail.action";' class="menuBum">
+<td>
+<font color="#FFFFFF" size="3">
+<b>CONFIRMAR E-MAIL</b>
+</font>
+</td>
+</tr>
+<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../acessoPublico/alterarAcesso.action";'>
+<td>
+<font color="#FFFFFF" size="3">
+<b>ALTERA&Ccedil;&Atilde;O DE SENHA</b>
+</font>
+</td>
+</tr>
+<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../acessoPublico/subirFoto.action";'>
+<td>
+<font color="#FFFFFF" size="3">
+<b>ENVIAR FOTO</b>
+</font>
+</td>
+</tr>
+<tr height="50px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../pesquisa/indexPesquisa.action";'>
+<td>
+<font color="#FFFFFF" size="3">
+<b>INFORMA&Ccedil;&Otilde;ES SOCIOECON&Ocirc;MICAS</b>
+</font>
+</td>
+</tr>
+<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../meusCartoes/showCartoes.action";'>
+<td>
+<font color="#FFFFFF" size="3">
+<b>MEUS CART&Otilde;ES</b>
+</font>
+</td>
+</tr>
+<tr height="80px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick="openUrlEstudante('../cartaoInternet/cartaoInternetPesquisar!solicitacaoEstudanteBUT.action');">
+<td>
+<font color="#FFFFFF" size="3">
+<b>ESTUDANTE - SOLICITA&Ccedil;&Atilde;O DE BENEF&Iacute;CIO</b>
+</font>
+</td>
+</tr>
+<tr height="100px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../cotaEstudante/carregarCotaEstudante.action";'>
+<td>
+<font color="#FFFFFF" size="3">
+<b>ESCOLHER TIPO DE COTA<br/>(MENSAL OU DINHEIRO)</b>
+</font>
+</td>
+</tr>
+<tr height="40px" style="vertical-align: middle; cursor:hand"" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../acessoPublico/pendencias.action";'>
+<td>
+<font color="#FFFFFF" size="3">
+<b>PEND&Ecirc;NCIAS</b>
+</font>
+</td>
+</tr>
+<tr height="40px" style="vertical-align: middle; cursor:hand" class="menuLine" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../acessoPublico/logout.action";'>
+<td>
+<font color="#FFFFFF" size="3">
+<b>SAIR</b>
+</font>
+</td>
+</tr>
+</table>
+-->
+</td>
+<td style="width: 80%; vertical-align: top;">
+<script>
+j().ready( function() {
+showErrors();
+verificarSessao();
+});
+/* function showErrors(){
+var msg = new String( $('divMessageError').innerHTML );
+if(msg.trim() !== ""){
+mensagemErrors(400, 210, "Aten&ccedil;&atilde;o", msg );
+}
+return false;
+} */
+function showErrors(){
+var msg = new String($('divMessageError').innerHTML);
+if(msg.trim() !== ""){
+modalMensagemErros();
+}
+return false;
+}
+</script>
+<div id="divHidden" style="visibility: hidden; display: none;">
+<div id="divMessageError">
+</div>
+</div>
+<table style="width:640px;" border="0" align="center">
+<tr>
+<td>
+<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" style="height: 30px; width: 100%; vertical-align: middle; ">
+<p style="margin-top: 8px; text-align: center;">Home do Usu&aacute;rio</p>
+</div>
+</td>
+</tr>
+</table>
+<table style="width:640px;" border="0" align="center" class="ui-widget-header-white ui-corner-all dados" >
+<tr>
+<td class="titulo_pagina">
+<p>Ol&aacute; NATHALIA FISCHER FINAZZI PORTO! Seja bem-vindo(a) ao Servi&ccedil;o Eletr&ocirc;nico de Cadastramento do Usu&aacute;rio do Novo Bilhete &Uacute;nico da SPTrans.</p>
+</td>
+</tr>
+<tr>
+<td align="center">
+<table style="width:75%;" border="0" align="center">
+<tr>
+<td>
+<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" style="height: 30px; width: 100%; vertical-align: middle; ">
+<p style="margin-top: 8px; text-align: center;">Pend&ecirc;ncias obrigat&oacute;rias</p>
+</div>
+</td>
+</tr>
+</table>
+<table width="75%" class="ui-widget-header-white ui-corner-all dados" align="center">
+<tr>
+<td >
+<p><b><img src="../imagens/ok.gif"/>&nbsp;Parab&eacute;ns!! Voc&ecirc; n&atilde;o possui pend&ecirc;ncias obrigat&oacute;rias</b></p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td align="center">
+<table style="width:75%;" border="0" align="center">
+<tr>
+<td>
+<div class="ui-dialog-titlebar ui-widget-header-blue ui-corner-all ui-helper-clearfix" style="height: 30px; width: 100%; vertical-align: middle; ">
+<p style="margin-top: 8px; text-align: center;">Pend&ecirc;ncias n&atilde;o obrigat&oacute;rias</p>
+</div>
+</td>
+</tr>
+</table>
+<table width="75%" class="ui-widget-header-white ui-corner-all dados" align="center">
+<tr>
+<td >
+<p><b><img src="../imagens/ok.gif"/>&nbsp;Parab&eacute;ns!! Voc&ecirc; n&atilde;o possui pend&ecirc;ncias n&atilde;o obrigat&oacute;rias</b></p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td align="center">
+<table style="width:75%;" border="0" align="center">
+<tr>
+<td>
+<div class="ui-dialog-titlebar ui-widget-header-green ui-corner-all ui-helper-clearfix" style="height: 30px; width: 100%; vertical-align: middle; ">
+<p style="margin-top: 8px; text-align: center;">Estudantes</p>
+</div>
+</td>
+</tr>
+</table>
+<table width="75%" class="ui-widget-header-white ui-corner-all dados">
+<tr>
+<td class="titulo_pagina" style="background-color:#fff; color:#000;" >
+<p><center><b>Se voc&ecirc; &eacute; estudante e deseja solicitar o benef&iacute;cio <a href="#" onclick="openUrlEstudante('../cartaoInternet/cartaoInternetPesquisar!solicitacaoEstudanteBUT.action');">clique aqui</a></b></center></p>
+<!-- <p><center><b>Se j&aacute; solicitou e deseja comprar sua cota de estudante <a href="#" onclick='aguarde(350,200,"Aguarde", "Carregando...");window.location = "../cotaEstudante/carregarCotaEstudante.action";'>clique aqui</a></b></center></p> -->
+<p><center><b>Se deseja informa&ccedil;&atilde;o sobre gratuidade de estudante <a href="#" onclick="openUrlEstudante('../consultaEstudante/index.action?acessoPublico=true');">clique aqui</a></b></center></p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td align="center">
+<table style="width:78%;" border="0" align="center">
+<tr>
+<td>
+<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" style="height: 30px; width: 100%; vertical-align: middle; ">
+<p style="margin-top: 8px; text-align: center;">Bilhete &Uacute;nico Personalizado</p>
+</div>
+</td>
+</tr>
+</table>
+<table width="78%" class="ui-widget-header-white ui-corner-all dados">
+<tr>
+<td class="titulo_pagina" style="background-color:#fff; color:#000;" >
+<p>Esse cart&atilde;o permite recarga de cr&eacute;ditos Comum e Vale-Transporte.
+Para retirar a 1&ordf; ou 2&ordf; via desse cart&atilde;o, dirija-se a qualquer <a href='#' onclick="openUrlBlank('http://bilheteunico.sptrans.com.br/comumPostos.aspx')" >posto de atendimento</a> SPTrans.</p>
+<!--<p>Para retirar a 1&ordf; ou 2&ordf; via do seu cart&atilde;o dirigir-se um posto de atendimento SPTrans para retirar a 1&ordf; via do Bilhete &Uacute;nico" somente se n&atilde;o possuir cart&atilde;o BUM ou a 2&ordf; via est&atilde;o pendente:&nbsp;<a href='#' onclick="openUrlBlank('http://bilheteunico.sptrans.com.br/comumPostos.aspx')" >clique aqui</a></p> -->
+<p>&nbsp;</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+<script id="f5_cspm">(function(){var f5_cspm={f5_p:'LFBKGBIIBLCPAPOJJNLMACIFBOJBNGLKBIGCBDIMBDMBHLJCKEDOKGMBBBFAPIBIFOLGJGFGOBHGOPPMAMEFEMHKLJCNPNHLIFPBJHNOLFKCBDJECLJHBGIDHDPHMBOJ',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,32,(latency>>8));str=f5_cspm.set_byte(str,33,(latency&0xff));str=f5_cspm.set_byte(str,27,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='f5avraaaaaaaaaaaaaaaa='+encodeURIComponent(cookie_val)+';path=/';}
+return;}}
+catch(err){return;}
+setTimeout(f5_cspm.wait_perf_data,100);return;},go:function(){var chunk=window.document.cookie.split(/\s*;\s*/);for(var i=0;i<chunk.length;++i){var pair=chunk[i].split(/\s*=\s*/);if(pair[0]=='f5_cspm'&&pair[1]=='1234')
+{var d=new Date();d.setTime(d.getTime()-1000);window.document.cookie='f5_cspm=;expires='+d.toUTCString()+';path=/;';setTimeout(f5_cspm.wait_perf_data,100);}}}}
+f5_cspm.go();}());</script>
