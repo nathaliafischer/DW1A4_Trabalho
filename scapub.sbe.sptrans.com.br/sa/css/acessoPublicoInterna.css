@@ -1,0 +1,7 @@
+.topSite { background-color: #939393; height: 90px; width:960px;  }
+.nomeTop { font-family:Arial, Helvetica, sans-serif; color: #fff; font-size:18px; padding:18px; text-transform:uppercase; float:left; }
+.imgSPT { float:right; } 
+.imgSPT img { padding-right: 20px; border: 0; }
+.imgSPT a { border:0; text-decoration: none; }
+.tableTitles{ text-align: center; background: none repeat scroll 0 0 #C70102;color: #FFFFFF; font-size: 13px; font-weight: bold; padding: 5px 10px; border: 1px solid #000;}
+.tableRow {font-size: 12px; padding-bottom: 3px; padding-top: 3px; text-align: center; border: 1px solid #999;}
