@@ -1,3 +1,6 @@
+//@media only screen and (max-device-width: 900px) {
+// bdTela { width:100%; } }
+
 body {
 	SCROLLBAR-FACE-COLOR: #ffffff;
 	BACKGROUND-ATTACHMENT: fixed;
